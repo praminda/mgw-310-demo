@@ -1,0 +1,22 @@
+syntax = "proto3";
+package org.virajsalaka.grpc;
+
+import "wso2_options.proto";
+ 
+service HelloWorld {
+    rpc hello (HelloRequest) returns (HelloReply);
+
+    option (wso2.production_endpoints) = {
+        url : "http://localhost:50051";
+    };
+
+    option (wso2.security) = APIKEY;
+}
+ 
+message HelloRequest {
+    string input = 1;
+}
+ 
+message HelloReply {
+    string output = 1;
+}
